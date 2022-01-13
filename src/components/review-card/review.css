@@ -1,0 +1,11 @@
+.userImg {
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.userImg > img{
+    object-fit: contain;
+    width: 5vw;
+}

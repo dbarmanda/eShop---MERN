@@ -1,0 +1,57 @@
+.product {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: flex-end;
+
+    max-height: 400px;
+    min-width: 100px;
+
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+
+    background-color: white !important;
+    z-index: 2;
+}
+
+
+.product_info{
+    height: 100px;
+    margin-bottom: 15px;
+    transition: all 0.5s;
+}
+
+
+.product_rating{
+    display: flex;
+
+}
+
+.product_rating > span{
+    margin: 0.5vmax;
+    font: 300 0.8rem "Roboto";
+}
+
+
+.product_price{
+    margin-top: 5px;
+}
+
+/* .product > img{ */
+.product_image{    
+    /** game changer of image putting any type/size **/
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product > button {
+    background-color: #f0c14b;
+    border: 1px solid;
+    border-color: #c3951f;
+    cursor: pointer;
+}

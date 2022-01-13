@@ -1,0 +1,105 @@
+.navbar{
+    background-color: #15464F;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 70px;
+}
+
+.navbar_logo{
+    object-fit: contain;
+    width: 5.6rem;
+    margin: 6px 16px;;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.navbar_search{
+    display: flex;
+    flex: 1;
+}
+
+.navbar_searchInput{
+    /* width: 50vw; */
+    padding: 10px;
+    border: none;
+    outline: none;
+    width: 100%;
+    
+}
+
+.navbar_searchIcon{
+    background-color: #F8A72F;
+    padding: 6px;
+}
+
+.navbar_nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar_link{
+    text-decoration: none;
+    color: white;
+}
+
+.navbar_flag{
+    margin-right: 15px;
+}
+
+.navbar_option{
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+}
+
+.navbar_optionOne{
+    font-size: 10px;
+}
+
+.navbar_optionTwo{
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.navbar_optionBasket{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.navbar_optionBasket > span{
+    color:#15464F;
+}
+
+#speedDialAdmin{
+    position: relative;
+    top: 120px;
+}
+
+#speedDial{
+    position: relative;
+    top: 92px;
+}
+
+.navbar_kart{
+    width: 2.8rem !important;
+    height: 2rem !important;
+    margin-right: 13px;
+
+}
+
+.MuiFab-primary{
+    background-color:  #5f7e71!important;
+}
+
+.navbar_basketCount{
+    font-size: 13px;
+    color: #15464F;
+   position: absolute;
+   left: 1rem;
+   top: 0.21rem;
+}
