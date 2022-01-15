@@ -19,12 +19,11 @@ const MyOrders = () => {
   const { loading, error, orders } = useSelector((state) => state.myOrders);
   const { user } = useSelector((state) => state.user);
 
+  console.log(orders);
+
   const rows = [];
   const columns = [
-    //create columns model just like mongoose
-    /*
-    in html 'name' use to target element here "field " will do the work
-    */
+   
     {field: "id",headerName: "Order ID",minWidth: 300,flex: 1},
     {
       field: "status",
@@ -63,7 +62,7 @@ const MyOrders = () => {
                     <LaunchRounded/>
                 </Link>
             );
-        }  // can give an html element inside--> + read all fields use getState
+        }  
     }
   ];
 

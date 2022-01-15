@@ -37,15 +37,11 @@ function ProductDetail() {
 /********************************* */
   const { id } = useParams();
 
-  // const {match} = useParams();
-  // const {
-  //     id
-  //   } = match;
+
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
 
-  // console.log(product);
 
   useEffect(() => {
     if(error){
@@ -157,27 +153,20 @@ function ProductDetail() {
         >
           <DialogTitle>Submit Review</DialogTitle>
           <DialogContent className="submitDialog">
-            {/* <Rating
-                  onChange={(e) => setRating(e.target.value)}
-                  // value={rating}
-                  size="large"
-                /> */}
+            
   
             <textarea
               className="submitDialogTextArea"
               cols="30"
               rows="5"
-              // value={comment}
-              // onChange={(e) => setComment(e.target.value)}
+             
             ></textarea>
           </DialogContent>
           <DialogActions>
             <Button onClick={submitReviewToggle} color="secondary">
               Cancel
             </Button>
-            {/* <Button onClick={reviewSubmitHandler} color="primary">
-                  Submit
-                </Button> */}
+            
           </DialogActions>
         </Dialog>
   

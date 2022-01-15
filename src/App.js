@@ -82,6 +82,9 @@ function App() {
             }
           ></Route>
 
+          <Route path="/products/:keyword" element={ <> <Navbar /> <Products /> </> }
+          />
+
           <Route
             exact
             path="/product/:id"

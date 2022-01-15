@@ -21,6 +21,7 @@ import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import { useAlert } from "react-alert";
 
 import {loadUser, logout} from "../../state/actions/userAction";
+import { useParams } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -31,9 +32,7 @@ function Navbar() {
 
   const {cartItems} = useSelector(state => state.cart)
 
-  console.log(user);
-  //for logout-menu
-
+  
   const dashboard = (e) => {
     // e.preventDefault();
     navigate("/dashboard");
@@ -49,11 +48,7 @@ function Navbar() {
     // e.preventDefault();
     localStorage.setItem('token', null);
     dispatch(logout());
-    // user=null;
-    // if(localStorage.getItem('token')){
-      // window.location.reload();
-    // }
-    // navigate("/account");
+    
     alert.success("Logout Successfully");
   };
 
@@ -94,6 +89,11 @@ function Navbar() {
   const searchSubmitHandler = (e) => {
     // console.log(keyword);
     e.preventDefault();
+    if(keyword.trim()){
+      navigate(`/products/${keyword}`);
+    } else {
+      navigate("/products");
+    }
   };
 
   return (
@@ -127,7 +127,7 @@ function Navbar() {
           </div>
         </div>
 
-        <Link className="navbar_link" to="/login">
+        <Link className="navbar_link" to={isAuthenticated ? "/account" : "/login"}>
           <div className="navbar_option">
             <span className="navbar_optionOne">Hello,</span>
             <span className="navbar_optionTwo">
@@ -188,23 +188,7 @@ function Navbar() {
           </div>
          
         )
-        // <SpeedDial
-        // className="navbar_link" id="speedDial"
-        //   ariaLabel="speedDial tooltip example"
-        //   onClose={onCloseH}
-        //   onOpen={onOpenH}
-        //   open={open}
-        //   icon={<MenuOpenIcon/>}
-        //   direction="down"
-        // >
-        // {/* <p>logger</p> */}
-        // {/* {options.map((item)=>(
-        //   <SpeedDialAction key={item.name} icon={item.icon} tooltipTitle={item.name}
-        //     onClick={item.func}
-        //     ></SpeedDialAction>
-        // ))} */}
-
-        //  </SpeedDial>
+     
       }
     </nav>
     )}

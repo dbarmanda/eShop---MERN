@@ -20,7 +20,7 @@
 
 .product_info{
     height: 100px;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     transition: all 0.5s;
 }
 
@@ -50,8 +50,10 @@
 }
 
 .product > button {
+    margin-top: 10px;
     background-color: #f0c14b;
     border: 1px solid;
     border-color: #c3951f;
     cursor: pointer;
+    padding: 1.5px;
 }

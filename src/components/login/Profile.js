@@ -14,10 +14,10 @@ const Profile = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(!isAuthenticated){
+        if(isAuthenticated === false){
             navigate("/login")
         }
-    }, [])
+    }, [isAuthenticated, navigate])
     return (
 
       // <p>Hello brother</p>

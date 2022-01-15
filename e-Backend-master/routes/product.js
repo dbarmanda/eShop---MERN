@@ -28,7 +28,7 @@ router.post('/admin/product/new',  isAuthenticated,authorizeRoles("admin"),  cat
 //2. Get-all Products
 router.get("/products" , catchAsyncErrors(async(req, res)=> {
     
-    const resultPerPage = 7;
+    const resultPerPage = 8;
 
 
     const productsCount = await Product.countDocuments();
@@ -42,7 +42,8 @@ router.get("/products" , catchAsyncErrors(async(req, res)=> {
     res.status(200).json({
         success: true,
         products: products,
-        productsCount
+        productsCount,
+        resultPerPage
     });
 }));
 

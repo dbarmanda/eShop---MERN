@@ -37,8 +37,8 @@ function Login() {
   const {error, loading, isAuthenticated} = useSelector(state => state.user)
 
   //lets make a redirect route using "location.search"
-  const redirect = window.location.search ? window.location.search.split("=").at(1): "/account";
-  console.log(redirect);
+  const redirect = window.location.search ? window.location.search.split("=").at(1): "account";
+  // console.log(redirect);
 
   const loginUser = (e)=> {
     e.preventDefault();   //always in form to prevent refresh
@@ -76,6 +76,7 @@ function Login() {
 
 
     if(isAuthenticated){
+      console.log(redirect);
       navigate(`/${redirect}`);
     }
    
@@ -117,7 +118,7 @@ function Login() {
                 <button type="submit" className="login_signInBtn" onClick={loginUser}>Sign In</button>
               </form>
 
-              <button className="login_google" onClick={loginGoogle}>Login with Google</button>
+              {/* <button className="login_google" onClick={loginGoogle}>Login with Google</button> */}
               <p>
                 By continuing, you agree to Eshoppers's Conditions of Use and
                 Privacy Notice. Happy e-shopping 🔥

@@ -30,22 +30,7 @@ function Checkout() {
         alt=""
       />
 
-    {/* //   {/* {basket.length === 0 ? ( 
-    //   {!cartItems ? ( 
-        // <div className="checkout_empty">
-        //   <img
-        //     className="checkout_emptyImage"
-        //     src="https://m.media-amazon.com/images/G/31/cart/empty/kettle-desaturated._CB424694257_.svg"
-        //     alt=""
-        //   />
-        //   <div className="checkout_emptyInfo">
-        //     <h2>Your Eshop Basket is empty</h2>
-        //     <small>Shop today's deals</small>
-        //   </div>
-        // </div>
-
-
-    //   ) : (*/}
+   
     {cartItems.length === 0 ? (
         <div className="checkout_empty">
           <img

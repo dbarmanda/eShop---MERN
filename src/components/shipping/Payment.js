@@ -44,6 +44,10 @@ const Payment = () => {
       taxPrice: orderInfo.tax,
       shippingPrice: orderInfo.shippingCharges,
       totalPrice: orderInfo.totalPrice,
+      paymentInfo: {
+        id: "atempPayment_id_generated_by_creator",
+        status: "succeeded"
+      }
     };
 
 

@@ -53,7 +53,8 @@ router.post("/register", catchAsyncErrors(async (req, res, next)=>{
     res.status(201).json({
         success: true,
         token,
-        user
+        user,
+        error
     });
     
    

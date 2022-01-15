@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import "./product.css";
 // import ReactStars from "react-rating-stars-component";
 
@@ -10,15 +10,18 @@ import { Rating } from "@mui/material";
 import ReactStars from "react-rating-stars-component";
 
 import { Link } from "react-router-dom";
+import { addItemsToCart } from "../../state/actions/cartAction";
 
 function Product(props) {
+  const dispatch = useDispatch();
   const { id, title, price, rating, image,numOfReviews } = props;
 
-  //manipulating redux state
-  // console.log(image.url);
+ 
+  const [quantity, setQuantity] = useState(1);
 
    const addToKart = (e)=>{
     e.preventDefault();
+    dispatch(addItemsToCart(id, quantity));
    }
 
 
@@ -34,7 +37,6 @@ function Product(props) {
         </p>
 
         <div className="product_rating">
-        {/* <ReactStars name="half-rating-read" value={rating} precision={0.5} readOnly /> */}
         <ReactStars edit={false} value={rating} isHalf={true} size={window.innerWidth < 600 ? 20: 25} /> <span>{numOfReviews} reviews</span>
         </div>
       </div> 

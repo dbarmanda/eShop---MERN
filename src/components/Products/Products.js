@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./products.css"
 import bannerImg from "./banner.jpg"
 import Product from '../product/Product'
@@ -8,6 +8,10 @@ import { clearErrors, getProducts } from '../../state/actions/productAction';
 import Loader from '../loader/Loader';
 
 import { useAlert } from 'react-alert';
+//for search & pagination..
+import {useParams } from "react-router-dom"; 
+import Pagination from "react-js-pagination";
+
 
 function Products() {
 
@@ -15,12 +19,21 @@ function Products() {
 
     const dispatch = useDispatch();
     
-    const {loading, error, products, productsCount} = useSelector(
+    const [currentPage, setCurrentPage] = useState(1);
+    const {loading, error, products, productsCount, resultPerPage} = useSelector(
         (state)=>state.products
     )
 
-    // console.log(products)
-    // console.log(products)
+    const setCurrentPageNo = (e)=> {
+        setCurrentPage(e);
+    }
+
+
+    //for searching option
+    const {keyword} = useParams();
+    console.log(products);
+
+
     useEffect(() => {
 
         if(error){
@@ -29,8 +42,8 @@ function Products() {
           }
 
 
-       dispatch(getProducts());
-    }, [dispatch, error])
+       dispatch(getProducts(keyword, currentPage));
+    }, [dispatch, error, keyword,currentPage])
 
     return (
         <>
@@ -51,7 +64,7 @@ function Products() {
                  id={product._id}
                  title={product.name}
                  price={product.price}
-                 image={product.images}
+                 image={product.images[0].url}
                  rating={product.rating}
                  numOfReviews={product.numOfReviews}
                 // title="NVIDIA Quadro RTX 5000 16GB GDDR6 Graphic Card (VCQRTX5000-PB)"
@@ -61,6 +74,25 @@ function Products() {
                 />
                 ))}
             </div>
+{resultPerPage < productsCount && (
+    <div className="paginationBox">
+    <Pagination
+        activePage={currentPage}
+        itemsCountPerPage={resultPerPage}
+        totalItemsCount={productsCount}
+        onChange={setCurrentPageNo}
+        nextPageText="Next"
+        prevPageText="Prev"
+        firstPageText="1st"
+        lastPageText="Last"
+        itemClass="page-item"
+        linkClass="page-link"
+        activeClass="pageItemActive"
+        activeLinkClass="pageLinkActive"
+    />
+</div>
+) }
+            
         </div>
 
             )

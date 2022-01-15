@@ -13,7 +13,7 @@ import {
 
 
 
-export const getProducts = () => async(dispatch)=> {
+export const getProducts = (keyword="", currentPage=1) => async(dispatch)=> {
 
     try {
 
@@ -23,7 +23,9 @@ export const getProducts = () => async(dispatch)=> {
         })
         // console.log("hello")
         //fetches data from our backend
-        const {data} = await axios.get("/api/v1/products");
+        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}`;
+        
+        const {data } = await axios.get(link);
         
         
      

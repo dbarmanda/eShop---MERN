@@ -11,7 +11,7 @@ const OrderSuccess = () => {
       <CheckCircleTwoTone />
 
       <Typography>Your Order has been Placed successfully </Typography>
-      <Link to="/orders">View Orders</Link>
+      <Link to="/">Return to Home</Link>
     </div>
   );
 };

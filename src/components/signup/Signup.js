@@ -5,6 +5,8 @@ import "./signup.css";
 import { useNavigate } from "react-router";
 
 import Loader from "../loader/Loader";
+import { useAlert } from "react-alert";
+
 
 import {clearErrors, register} from "../../state/actions/userAction";
 
@@ -14,9 +16,10 @@ function Signup() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const alert = useAlert();
 
 
-  const {loading, user, isAuthenticated} = useSelector(state => state.user)
+  const {loading, user, isAuthenticated, error} = useSelector(state => state.user)
 
     const [userT, setUserT] = useState({
         name: "",
@@ -41,16 +44,9 @@ function Signup() {
       };
 
       dispatch(register(newUser));
-      // navigate('/account');
-
-      console.log("1")
 
       };
 
-      //*** we need file reader for this action (input is file) */
-     
-     
-      
      
       const registerDataChange = (e) => {
         if(e.target.value === "avatar") {
@@ -71,57 +67,52 @@ function Signup() {
       }
 
       useEffect(() => {
-        if(isAuthenticated === true){   // ---> might solve the problem
+
+        if(error){
+          alert.error(error);
+          dispatch(clearErrors());
+        }
+
+        if(isAuthenticated === true){   
           navigate("/account")
         }
       }, [isAuthenticated])
     return (
-      <>
+     <>
+     
     
-         <div className="login_logo">
-           <Link to="/" >
-           <img
-             className="login_logoImg"
-             src="https://creativedok.com/content/uploads/2017/05/ESHOPPER.jpg"
-             alt=""
-           />
-           </Link>
-           </div>
-           <div className="login">
+        <div className="login_logo">
+          <Link to="/" >
+          <img
+            className="login_logoImg"
+            src="https://creativedok.com/content/uploads/2017/05/ESHOPPER.jpg"
+            alt=""
+          />
+          </Link>
+          </div>
+          <div className="login">
+          
+            <div className="login_container">
            
-             <div className="login_container">
-            
-               <form className="loginForm"  >
-               <h1>Sign Up</h1>
-                 <h5>Name</h5>
-                 <input type="text" name="name" required onChange={(e)=> setUserT({...userT, [e.target.name]: e.target.value})}/>
-                 {/* <input type="text" required onChange={registerDataChange}/> */}
-                 <h5>Email</h5>
-                 <input type="email" name="email" onChange={(e)=> setUserT({...userT, [e.target.name]: e.target.value})} required />
-                 <h5>Password</h5>
-                 <input type="password" name="password" required onChange={(e)=> setUserT({...userT, [e.target.name]: e.target.value})}/>
-                 <h5>Confirm-Password</h5>
-                 <input type="password" required onChange={(e)=> setUserT({...userT, [e.target.name]: e.target.value})}/>
- 
-                 {/* <h5>Select profile Image</h5>
-                 <div className="registerImage">
-                     <img src="" alt="" />
-                     <input 
-                         type="file" 
-                         name="avatar"
-                         accept="image/*"
-                         onChange={registerDataChange}
-                         />
- 
-                 </div> */}
-     
-                 <button type="submit" className="login_signInBtn" onClick={registerUser}>Register Account</button>
-               </form>
-     
-               
-             </div>
-           </div>
-         </>
-      )}
+              <form className="loginForm"  >
+              <h1>Sign Up</h1>
+                <h5>Name</h5>
+                <input type="text" name="name" placeholder="min 4 charaters" required onChange={(e)=> setUserT({...userT, [e.target.name]: e.target.value})}/>
+                <h5>Email</h5>
+                <input type="email" name="email" placeholder="abc@xyz.com" onChange={(e)=> setUserT({...userT, [e.target.name]: e.target.value})} required />
+                <h5>Password</h5>
+                <input type="password" name="password" placeholder="min 8 charaters" required onChange={(e)=> setUserT({...userT, [e.target.name]: e.target.value})}/>
+                <h5>Confirm-Password</h5>
+                <input type="password" required onChange={(e)=> setUserT({...userT, [e.target.name]: e.target.value})}/>
+    
+                <button type="submit" className="login_signInBtn" onClick={registerUser}>Register Account</button>
+              </form>
+    
+              
+            </div>
+          </div>
+        </>
+     )}
+  
      
 export default Signup;
